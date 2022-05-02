@@ -1,2 +1,0 @@
-# MicroPy
- for micropython
