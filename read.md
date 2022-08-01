@@ -1,2 +1,2 @@
 # Micropython
-    this repository is for micropython learning. it try my best to update full knowledge of it. 
+Its python3 based program for microcontroller. As like python it's also an interpreter. REPL window is available for direct interaction with microcontroller. You can check the [official page ](https://micropython.org) for more details and to download the __firmware__ for microcontroller. It was created by an Australian programmer and Physicist __Damien George__ in 2013. Micropython mainly works with the module called "__machine__". You can use software like [Thonny](https://thonny.org),uPyCraft or you can use vs code with adafruit-ampy library after flashing firmware to board.
