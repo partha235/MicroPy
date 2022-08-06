@@ -10,8 +10,9 @@ def sen_read():
 
 while True:
     sen_read()
-    print(x) # to know the output
     if x==1:
         print("saga")
         sleep_ms(250)
-    
+    else:
+        print("hello welcome")
+        sleep_ms(500)
