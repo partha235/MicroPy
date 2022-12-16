@@ -1,7 +1,7 @@
 from machine import Pin
 from utime import sleep_ms
 
-sen=Pin(4,Pin.IN)
+sen=Pin(4,Pin.IN,Pin.PULL_UP)
 def sen_read():
     global x      # declaring the variable as global.
     x=sen.value() # to read a value of Pin.
