@@ -1,0 +1,11 @@
+from machine import Pin,PWM
+from utime import sleep_ms
+
+freq=1000
+led=Pin(2,Pin.OUT)
+pwm=PWM(led,freq)
+while True:
+    for x in range(0,1024):
+        pwm.duty(x)
+        print(x)
+        sleep_ms(100)
