@@ -1,6 +1,7 @@
 try:
     from machine import Pin 
     print(dir(Pin))
+    print("hello")
 except:
     from machine import Pin 
     from utime import sleep_ms
