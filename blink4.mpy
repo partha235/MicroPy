@@ -1,0 +1,10 @@
+# this is another blink program of toggle() command for supported mcu's.
+# this program is for pi pico W 
+from machine import Pin 
+from utime import sleep_ms
+led=Pin("LED",Pin.OUT)  # in firmware the onboard led is declared as LED which is of pin 25
+                        # sometimes declaring pin to 25 won't work as pin 25 is mentioned 
+                        # but not to onboard LED, thus program work but led never blink.
+while True:
+    led.toggle() # change state alternately. 
+    sleep_ms(200)
