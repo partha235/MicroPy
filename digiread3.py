@@ -1,5 +1,5 @@
-"""this program is to demonstrate the pin with internal "Pullup" & "pulldown" resistor value. it increase
-the accuracy of sensor read value."""
+"""this program is to demonstrate the pin with internal "Pullup" & "pulldown" resistor value. 
+it increase the accuracy of sensor read value."""
 from machine import Pin
 from utime import sleep_ms  
 

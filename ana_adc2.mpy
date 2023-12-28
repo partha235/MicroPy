@@ -1,0 +1,7 @@
+# this program works with pi pico.
+from machine import Pin,ADC
+from utime import sleep_ms
+pot=ADC(Pin(26))
+while True:
+    print(pot.read_u16())
+    sleep_ms(100)
