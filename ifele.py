@@ -11,8 +11,8 @@ def sen_read():
 while True:
     sen_read()
     if x==1:
-        print("saga")
+        print("I'm on")
         sleep_ms(250)
     else:
-        print("hello welcome")
+        print("I'm off")
         sleep_ms(500)
