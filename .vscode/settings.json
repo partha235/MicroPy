@@ -2,9 +2,12 @@
     "cSpell.words": [
         "atten",
         "baurdrate",
+        "GPIO",
         "ledpin",
         "mcu's",
         "Pullup",
+        "sclk",
+        "serv",
         "utime"
     ]
 }

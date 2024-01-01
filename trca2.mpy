@@ -1,0 +1,6 @@
+from machine import Pin
+try:
+    x=Pin(34,Pin.OUT)
+    print("pin 43")
+except Exception as error:
+    print(error)

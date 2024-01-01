@@ -1,0 +1,9 @@
+from machine import Pin,PWM
+from utime import sleep
+x=PWM(Pin(12,Pin.OUT),50)
+while True:
+    x.duty(26)
+    sleep(2)
+    print("1st loop")
+    x.duty(123)
+    sleep(2)

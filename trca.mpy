@@ -1,0 +1,7 @@
+from machine import Pin
+try:
+    x=Pin(34,Pin.OUT)
+    print("pin 43")
+except:
+    x=Pin(26,Pin.OUT)
+    print("pin 26")
