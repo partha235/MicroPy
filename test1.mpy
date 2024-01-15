@@ -1,2 +1,2 @@
-from machine import Pin 
-print(dir(Pin))
+import os
+os.system("ampy --help")
