@@ -8,6 +8,8 @@
         "Pullup",
         "sclk",
         "serv",
-        "utime"
+        "utime",
+        "VCOMH",
+        "writeto"
     ]
 }
