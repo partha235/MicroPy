@@ -1,0 +1,51 @@
+import machine
+import time
+
+def init_display(i2c, address):
+    i2c.writeto(address, b'\x00\xAE')  # Display off
+    i2c.writeto(address, b'\x00\xD5\x80')  # Set display clock divide ratio/oscillator frequency
+    i2c.writeto(address, b'\x00\xA8\x3F')  # Set multiplex ratio
+    i2c.writeto(address, b'\x00\xD3\x00')  # Set display offset
+    i2c.writeto(address, b'\x00\x40')  # Set display start line
+    i2c.writeto(address, b'\x00\x8D\x14')  # Charge pump setting
+    i2c.writeto(address, b'\x00\x20\x00')  # Set memory addressing mode to horizontal
+    i2c.writeto(address, b'\x00\xA1')  # Set segment re-map
+    i2c.writeto(address, b'\x00\xC8')  # Set COM output scan direction
+    i2c.writeto(address, b'\x00\xDA\x12')  # Set COM pins hardware configuration
+    i2c.writeto(address, b'\x00\x81\xCF')  # Set contrast control
+    i2c.writeto(address, b'\x00\xD9\xF1')  # Set pre-charge period
+    i2c.writeto(address, b'\x00\xDB\x40')  # Set VCOMH deselect level
+    i2c.writeto(address, b'\x00\xA4')  # Entire display ON
+    i2c.writeto(address, b'\x00\xA6')  # Set normal display
+
+def clear_display(i2c, address):
+    i2c.writeto(address, b'\x00\x21\x00\x7F\x22\x00\x07')  # Set column and page addresses to cover the entire display
+    i2c.writeto(address, b'\x40' + b'\x00' * (128 * 8))  # Clear display memory
+
+def write_text(i2c, address, text):
+    for char in text:
+        char_code = ord(char)
+        i2c.writeto(address, b'\x40' + bytes([char_code & 0x7F]))
+
+# I2C setup (replace 21 and 22 with the actual GPIO pin numbers)
+i2c = machine.I2C(0, scl=machine.Pin(22), sda=machine.Pin(21), freq=400000)
+
+# SSD1306 I2C address (typically 0x3C or 0x3D, check your display's datasheet)
+ssd1306_address = 0x3C
+
+# Initialize and clear the display
+init_display(i2c, ssd1306_address)
+clear_display(i2c, ssd1306_address)
+
+# Display the alphabet
+alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+write_text(i2c, ssd1306_address, alphabet)
+
+# Display ON
+i2c.writeto(ssd1306_address, b'\x00\xAF')
+
+# Wait for a few seconds (you might want to adjust this)
+time.sleep(5)
+
+# Display OFF
+i2c.writeto(ssd1306_address, b'\x00\xAE')
