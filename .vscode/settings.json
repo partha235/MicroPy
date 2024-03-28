@@ -5,6 +5,7 @@
         "DISP",
         "framebuf",
         "GPIO",
+        "IREF",
         "ledpin",
         "mcu's",
         "poweroff",
@@ -15,6 +16,8 @@
         "serv",
         "utime",
         "VCOMH",
-        "writeto"
+        "VLSB",
+        "writeto",
+        "writevto"
     ]
 }
