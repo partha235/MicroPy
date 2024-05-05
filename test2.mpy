@@ -1,22 +1,22 @@
-from micropython import const
-from machine import mem32
-from utime import sleep_ms
+from machine import Pin, SoftI2C
+import sys
+import ssd1306
 
-#  refer page no: 62 in datasheet.
-out_reg_0_31= 0x3FF44004  # GPIO 0-31 output register
+#You can choose any other combination of I2C pins
+i2c = SoftI2C(scl=Pin(1), sda=Pin(0))
 
-out_en= const(0x3FF44020)   # GPIO 0-31 output enable register
 
-pin2=1 << 2
+print('I2C SCANNER')
+print(i2c.scan())
 
-mem32[out_en] |= pin2
+sys.exit()
 
-print(hex(mem32[out_reg_0_31]))
+# oled_width = 128
+# oled_height = 64
+# oled = ssd1306.SSD1306_I2C(oled_width, oled_height, i2c)
 
-while True:
-    mem32[out_reg_0_31] |= pin2
-    print(hex(mem32[out_reg_0_31]))
-    sleep_ms(500)
-    mem32[out_reg_0_31] &= ~ pin2
-    print(hex(mem32[out_reg_0_31]))
-    sleep_ms(500)
+# oled.text('Hello, World 1!', 0, 0)
+# oled.text('Hello, World 2!', 0, 10)
+# oled.text('Hello, World 3!', 0, 20)
+
+oled.show()
