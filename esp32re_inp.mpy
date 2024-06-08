@@ -1,0 +1,9 @@
+from micropython import const
+from machine import mem32
+
+inp_reg_0_31=const(0x3FF4403C)
+
+pin_no= 1<< 4
+pin_reg=mem32[inp_reg_0_31]
+
+print((pin_reg & pin_no) !=0)
