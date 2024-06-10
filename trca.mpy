@@ -7,5 +7,5 @@ try:
     led.toggle()
     sleep_ms(200)
 except :
-    print("no function")
+    print("function not found")
     
