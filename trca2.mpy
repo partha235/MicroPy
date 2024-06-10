@@ -1,7 +1,10 @@
-from machine import Pin,ADC
-from utime import sleep
-x=Pin(26,Pin.IN,Pin.PULL_DOWN)
-re=ADC(x)
-while True:
-    print(re.read_u16())
-    sleep(0.2)
+from machine import Pin
+from utime import sleep_ms
+
+led=Pin(2,Pin.OUT)
+
+try:
+    led.toggle()
+    sleep_ms(200)
+except Exception as error:
+    print(error)
