@@ -1,9 +1,43 @@
+'''
+The servo motors generally works with 50Hz frequency which has a pulse width of 20milliseconds (pulse + rest period).
+The duration of of the pulse (on time) determine the angle of rotation for the servo motor.
+For 0 degree the duration is 0.5ms approximately, for 90degree it's 1.5ms and 180degree 2.5ms approximately.
+To write the PWM value: 
+    0degree => (0.5/20)*100=2.5%
+    90degree => (1.5/20)*100 =7.5%
+    180degree => (2.5/20)*100=12.5%
+
+Micropython has a duty cycle based on bit value of MCU. For 8bit process use a function "duty',
+for 16bit it use "duty_u16' function. It  also have PWM for nanosecond which was 'duty_ns".
+
+While using 8 bti the value range from 0 to 1024,So the write value be 
+
+    0.025*1024=25.6 ~26    # x.duty(26)
+    0.125*1024=128 ~ 128 #x.duty(128)
+
+While using 16 bti the value range from  0 to 65535 ,So the write value be   
+    0.025*65535= 1638.375 ~1638  #x.duty_u16(1638)
+    0.125*65535= 8191.875 ~8192  #x.duty_u16(8192)
+
+'''
+
+
 from machine import Pin,PWM
 from utime import sleep
-x=PWM(Pin(12,Pin.OUT),50)
+x=PWM(Pin(32,Pin.OUT),50)
+n=0
+
 while True:
-    x.duty(26)
+    # 8bit 
+    # x.duty(26)
+    # sleep(2)
+    # n+=1
+    # print(n,"st loop")
+    # x.duty(123)
+    # sleep(2) 
+
+    #16bit value
+    x.duty_u16(1638)
     sleep(2)
-    print("1st loop")
-    x.duty(123)
+    x.duty_u16(4096)
     sleep(2)
