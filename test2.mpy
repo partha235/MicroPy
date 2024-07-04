@@ -1,22 +1,78 @@
-from machine import Pin, SoftI2C
 import sys
-import ssd1306
+from machine import Pin
+from machine import Timer
+from time import sleep_ms
+import ubluetooth
+import struct
 
-#You can choose any other combination of I2C pins
-i2c = SoftI2C(scl=Pin(1), sda=Pin(0))
+# Initialize the BLE module
+bl = ubluetooth.BLE()
+print(dir(bl))
 
+# Activate Bluetooth
+bl.active(True)
 
-print('I2C SCANNER')
-print(i2c.scan())
+# Define the UUIDs for the Nordic UART Service (NUS)
+NUS_UUID = ubluetooth.UUID('6E400001-B5A3-F393-E0A9-E50E24DCCA9E')
+RX_UUID = ubluetooth.UUID('6E400002-B5A3-F393-E0A9-E50E24DCCA9E')
+TX_UUID = ubluetooth.UUID('6E400003-B5A3-F393-E0A9-E50E24DCCA9E')
 
-sys.exit()
+# Create the characteristics with their properties
+RX_CHAR = (RX_UUID, ubluetooth.FLAG_WRITE)
+TX_CHAR = (TX_UUID, ubluetooth.FLAG_NOTIFY)
 
-# oled_width = 128
-# oled_height = 64
-# oled = ssd1306.SSD1306_I2C(oled_width, oled_height, i2c)
+# Create the service with the characteristics
+NUS_SERVICE = (NUS_UUID, (RX_CHAR, TX_CHAR))
 
-# oled.text('Hello, World 1!', 0, 0)
-# oled.text('Hello, World 2!', 0, 10)
-# oled.text('Hello, World 3!', 0, 20)
+# Register the service
+bl.gatts_register_services([NUS_SERVICE])
 
-oled.show()
+# Callback function for Bluetooth events
+def ble_irq(event, data):
+    if event == 1:  # Central connected
+        conn_handle, addr_type, addr = data
+        print('Device connected')
+    elif event == 2:  # Central disconnected
+        conn_handle, addr_type, addr = data
+        print('Device disconnected')
+    elif event == 3:  # New message received
+        conn_handle, value_handle = data
+        value = bl.gatts_read(value_handle)
+        print('Received message:', value)
+
+# Set the IRQ handler for Bluetooth
+bl.irq(ble_irq)
+
+# Function to create advertising payload
+def advertising_payload(name=None, services=None):
+    payload = bytearray()
+
+    def _append(adv_type, value):
+        nonlocal payload
+        payload += struct.pack('BB', len(value) + 1, adv_type) + value
+
+    _append(0x01, struct.pack('B', 0x06))
+
+    if name:
+        _append(0x09, name.encode())
+
+    if services:
+        for uuid in services:
+            b = bytes(uuid)
+            _append(0x06 if len(b) == 2 else 0x07, b)
+
+    return payload
+
+# Start advertising
+adv_data = advertising_payload(name='MyESP32', services=[NUS_UUID])
+bl.gap_advertise(100, adv_data)
+
+print('Bluetooth setup complete')
+
+# Main loop
+try:
+    while True:
+        sleep_ms(1000)
+except KeyboardInterrupt:
+    print("Program interrupted")
+    sys.exit()
