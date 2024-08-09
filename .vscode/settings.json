@@ -1,14 +1,21 @@
 {
     "cSpell.words": [
+        "Atmel",
         "atten",
         "baurdrate",
         "clreg",
         "DISP",
+        "DPTR",
+        "FRAM",
         "framebuf",
         "GPIO",
+        "INTCON",
         "IREF",
         "ledpin",
+        "Magnetoresistive",
         "mcu's",
+        "MRAM",
+        "PORTA",
         "poweroff",
         "poweron",
         "PRECHARGE",
@@ -19,6 +26,7 @@
         "VCOMH",
         "VLSB",
         "writeto",
-        "writevto"
+        "writevto",
+        "Zigbee"
     ]
 }
