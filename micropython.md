@@ -1,0 +1,4 @@
+# <span style="color:Orange">Micropython</span>
+Micropython is a python_3 based program specially developed for microcontroller. It has accomplished most of the python function to run on low level machines. It was developed by an Physicist **Damien George** of Australia in 2013 as a hobby. To fund the development, Damien launched a Kickstarter campaign in December 2013. The campaign was a huge success, raising over £97,000, far exceeding the initial goal of £15,000. This success demonstrated the strong demand for a Python interpreter on microcontrollers.
+
+In 2014 Damien released the first version of micropython with customized development board which has STM32F4 microcontroller on it and known as **Pyboard**. MicroPython has revolutionized the way people interact with microcontrollers. MicroPython provides a Read-Eval-Print Loop (REPL) that allows you to interactively execute Python code and test hardware in real-time.

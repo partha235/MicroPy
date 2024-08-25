@@ -283,9 +283,6 @@ void loop() {
 }
 ```
 
-### Summary
-An ADC is a fundamental component for interfacing analog signals with digital systems, allowing microcontrollers and processors to work with real-world analog inputs. Its key parameters like resolution and sampling rate determine the accuracy and speed of the conversion process.
-
 ## DAC
 A **Digital-to-Analog Converter (DAC)** is a crucial component in electronics and embedded systems, serving the opposite function of an Analog-to-Digital Converter (ADC). A DAC converts digital data (usually binary) into an analog signal, such as a continuous voltage or current.
 
@@ -393,6 +390,3 @@ void loop() {
   // In a real application, you would write audio data to the I2S bus here.
 }
 ```
-
-### Summary
-I2S is a widely-used standard for digital audio transmission between integrated circuits. It’s especially popular in systems where high-quality audio is required, such as digital music players, microphones, and sound cards. It minimizes noise and signal degradation, making it ideal for high-fidelity audio applications.
