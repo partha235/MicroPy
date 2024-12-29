@@ -1,7 +1,7 @@
 from machine import Pin
 from time import sleep_ms
 
-led=Pin(2,Pin.OUT) #in esp32 dev kit Pin 2 has onboard led.
+led=Pin(23,Pin.OUT) #in esp32 dev kit Pin 2 has onboard led.
 
 while True:
     led.on()
