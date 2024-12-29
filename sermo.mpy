@@ -24,7 +24,7 @@ While using 16 bti the value range from  0 to 65535 ,So the write value be
 
 from machine import Pin,PWM
 from utime import sleep
-x=PWM(Pin(32,Pin.OUT),50)
+x=PWM(Pin(5,Pin.OUT),50)
 n=0
 
 while True:
@@ -41,3 +41,4 @@ while True:
     sleep(2)
     x.duty_u16(4096)
     sleep(2)
+    print('hi')
