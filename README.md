@@ -11,4 +11,7 @@ You can find tutorials on my **YouTube channel**, where I have created a **Micro
 
 👉 [Watch the Micropython Playlist](https://www.youtube.com/watch?v=AA5tJHtSvpc&list=PL3Cu8zFKcAQwN4YRsNxOjYaoCPav-kzB5)  
 
-<iframe width="560" height="315" src="https://youtu.be/809rAiIVIG8?si=VwKNNur_xWQxY5IP" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+<video width="320" height="240" controls>
+  <source src="https://youtu.be/809rAiIVIG8?si=VwKNNur_xWQxY5IP" type="video/mp4">
+</video>
