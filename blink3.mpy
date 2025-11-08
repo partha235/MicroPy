@@ -3,6 +3,8 @@ from machine import Pin
 from utime import sleep_ms
 led=Pin(2,Pin.OUT)
 while True:
+    print("hi")
     led.value(1) # 1 => True
     sleep_ms(200)
     led.value(0) # 0 => False
+    sleep_ms(200)
