@@ -265,24 +265,6 @@ ADC typically refers to a **Analog-to-Digital Converter (ADC)**, which is a cruc
 - **Audio Systems**: Converts analog audio signals into digital data for processing and playback.
 - **Instrumentation**: Measures physical quantities (e.g., voltage, current) and converts them into digital form for analysis and display.
 
-### Example in Microcontrollers
-Here’s a simple example of how you might use an ADC in a microcontroller (e.g., Arduino) to read an analog voltage:
-
-```cpp
-int analogPin = A0;  // Pin where the analog sensor is connected
-int sensorValue = 0; // Variable to store the ADC result
-
-void setup() {
-    Serial.begin(9600); // Start serial communication
-}
-
-void loop() {
-    sensorValue = analogRead(analogPin); // Read the analog input
-    Serial.println(sensorValue);         // Print the result to the Serial Monitor
-    delay(1000); // Wait for 1 second before the next read
-}
-```
-
 ## DAC
 A **Digital-to-Analog Converter (DAC)** is a crucial component in electronics and embedded systems, serving the opposite function of an Analog-to-Digital Converter (ADC). A DAC converts digital data (usually binary) into an analog signal, such as a continuous voltage or current.
 
@@ -313,17 +295,6 @@ A **Digital-to-Analog Converter (DAC)** is a crucial component in electronics an
 - **Control Systems**: DACs are used to convert digital control signals into analog signals to drive actuators, motors, or other analog devices.
 - **Video Output**: In video equipment, DACs convert digital video signals into analog signals that can be displayed on monitors or TVs.
 
-### Example in Embedded Systems
-In a microcontroller, you might use a DAC to generate an analog voltage corresponding to a digital value:
-
-```cpp
-int digitalValue = 128;  // Example 8-bit digital value
-analogWrite(pin, digitalValue);  // Output analog signal on the specified pin
-```
-
-### Summary
-A DAC is essential for converting digital data into an analog form that can interact with the physical world. It’s a key component in audio, video, and control systems, enabling digital devices to produce analog signals that can drive speakers, displays, motors, and other analog hardware.
-
 ## I2S
 **I2S (Inter-IC Sound)** is a standard serial bus interface used to connect digital audio devices. It is specifically designed for the transmission of digital audio data between components such as microcontrollers, digital signal processors (DSPs), digital-to-analog converters (DACs), analog-to-digital converters (ADCs), and other audio-related ICs.
 
@@ -353,40 +324,3 @@ A DAC is essential for converting digital data into an analog form that can inte
 - **Microphones**: To transmit digital audio data from a digital microphone to a processor or microcontroller.
 - **Bluetooth Audio Modules**: Often use I2S to interface with audio codecs for wireless audio transmission.
 - **Sound Cards**: In computers, I2S is used internally to connect various audio components.
-
-### Example of I2S in a Microcontroller (Arduino or ESP32)
-Here's a conceptual example of how you might set up I2S communication in an ESP32 to output audio data:
-
-```cpp
-#include "driver/i2s.h"
-
-void setup() {
-  // Configure I2S settings
-  i2s_config_t i2s_config = {
-      .mode = I2S_MODE_MASTER | I2S_MODE_TX,  // Master mode and transmit data
-      .sample_rate = 44100,                   // Sample rate
-      .bits_per_sample = I2S_BITS_PER_SAMPLE_16BIT, // 16-bit audio
-      .channel_format = I2S_CHANNEL_FMT_RIGHT_LEFT, // Stereo
-      .communication_format = I2S_COMM_FORMAT_I2S,  // I2S format
-      .intr_alloc_flags = 0,  // Interrupt level
-      .dma_buf_count = 8,
-      .dma_buf_len = 64,
-  };
-
-  // Configure I2S pins
-  i2s_pin_config_t pin_config = {
-      .bck_io_num = 26,   // Bit clock pin
-      .ws_io_num = 25,    // Word select pin (LRCK)
-      .data_out_num = 22, // Data output pin
-      .data_in_num = -1   // Data input pin (not used in this example)
-  };
-
-  // Install and start I2S driver
-  i2s_driver_install(I2S_NUM_0, &i2s_config, 0, NULL);
-  i2s_set_pin(I2S_NUM_0, &pin_config);
-}
-
-void loop() {
-  // In a real application, you would write audio data to the I2S bus here.
-}
-```
