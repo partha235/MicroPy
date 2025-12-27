@@ -11,7 +11,7 @@ def sen_read():
 while True:
     sen_read()
     print(x) # to know the output
-    if x==1:
+    if x==0:
         print("saga")
         sleep_ms(250)
     

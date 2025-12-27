@@ -2,7 +2,7 @@
 from machine import Pin
 from utime import sleep_ms
 
-but=Pin(4,Pin.IN,Pin.PULL_DOWN)   # connect one terminal to =ve and another to pin 4.
+but=Pin(4,Pin.IN,Pin.PULL_DOWN)   # connect one terminal to -ve and another to pin 4.
 led=Pin(2,Pin.OUT)
 
 while True:
