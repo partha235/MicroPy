@@ -1,10 +1,11 @@
+# try , except loop
 from machine import Pin
 from utime import sleep_ms
 
-led=Pin(2,Pin.OUT)
+led=Pin(4,Pin.OUT)
 
 try:
-    led.toggle()
+    led.value_change()
     sleep_ms(200)
 except :
     print("function not found")

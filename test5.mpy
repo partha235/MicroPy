@@ -1,0 +1,21 @@
+import _thread
+from time import sleep_ms
+
+print(dir(_thread))
+
+def x_val(i):
+    i+=7
+    print(" i = ",i)
+    sleep_ms(100)
+
+def y_val(r):
+    r+=8
+    print("r = ",r)
+    sleep_ms(100)
+
+_thread.start_new_thread(x_val,(5,))
+_thread.start_new_thread(y_val,(5,))
+
+while True:
+    print("check")
+    sleep_ms(100)

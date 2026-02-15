@@ -9,7 +9,7 @@ while True:
     if x>=4000:
         print("auto pilot")
         sleep_ms(500)
-    elif x>=3000:
+    elif x>=3000:    # else if => elif
         print("auto gear")
         sleep_ms(500)
     elif x>=1500:

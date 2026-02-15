@@ -1,8 +1,9 @@
+# Analog Write => PWM
 from machine import Pin,PWM
 from utime import sleep_ms
 from sys import exit
 frequency=50000 # 0 to 78125 for esp32
-led=PWM(Pin(2),frequency)
+led=PWM(Pin(4),frequency)
 x=0
 while True:
     led.duty(0)
@@ -14,6 +15,6 @@ while True:
             exit()
         led.duty(x)  # 0 to 1023 for full working range.
         
-        sleep_ms(200)
-        x=x+50
+        sleep_ms(500)
+        x=x+20
     x=0

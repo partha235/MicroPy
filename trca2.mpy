@@ -4,7 +4,7 @@ from utime import sleep_ms
 led=Pin(2,Pin.OUT)
 
 try:
-    led.toggle()
+    led.value_change()
     sleep_ms(200)
 except Exception as error:
     print(error)

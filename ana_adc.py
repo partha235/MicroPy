@@ -2,7 +2,7 @@
 from machine import Pin,ADC
 from utime import sleep_ms
 
-pot=ADC(Pin(25))  # baurdrate 115200 which is predefined for micropython.
+pot=ADC(Pin(15))  # baurdrate 115200 which is predefined for micropython.
 pot.atten(ADC.ATTN_11DB) # for 3.3v as full range.
 # pot.atten(ADC.ATTN_2_5DB) # for 1.5v as full range.
 # pot.atten(ADC.ATTN_6DB)  # for 2v as full range.
