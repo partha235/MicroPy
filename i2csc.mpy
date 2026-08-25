@@ -2,12 +2,12 @@
 from machine import Pin,I2C
 import sys
 
-sda_pin=Pin(22)
-sclk_pin=Pin(21)
+sda_pin=Pin(21)
+sclk_pin=Pin(22)
 
-i2c=I2C(0,sda=sda_pin,scl=sclk_pin)
+i2c=I2C(sda=sda_pin,scl=sclk_pin)
 
-print(i2c.scan())
+print(hex(i2c.scan()[0]))
 print(bool(i2c.scan()))
 
 sys.exit()
